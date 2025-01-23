@@ -1,0 +1,3 @@
+node_modules/
+# remove dist ignore to display on github pages
+dist/

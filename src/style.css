@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  display: flex;
+  min-height: 100vh;
+}
+
+button,
+input[type="submit"] {
+  display: block;
+  padding: 0.5em;
+  border-radius: 5%;
+  margin-bottom: 10px;
+  background-color: #e9bf5c;
+  border: none;
+  font-weight: bold;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #aa8238;
+  color: #ffff00;
+}
+
+/* sidebar */
+
+img {
+  height: 120px;
+}
+
+#sidebar {
+  width: 20vw;
+  background-color: #9c3c37;
+  color: #e9bf5c;
+}
+
+#sidebar h1 {
+  margin: 0.5em 0.5em 0.3em;
+}
+
+#sidebar h3 {
+  margin: 0 0 0 0.5em;
+}
+
+#icon-headings {
+  display: flex;
+}
+
+#view-all-tasks-btn,
+#create-task-btn,
+#create-project-btn {
+  margin: 0;
+  padding: 1em;
+  border-radius: 0%;
+  width: 20vw;
+  text-align: left;
+  background-color: #9c3c37;
+  color: white;
+}
+
+#view-all-tasks-btn:hover,
+#create-task-btn:hover,
+#create-project-btn:hover {
+  background-color: #72312d;
+}
+
+#project-buttons h2 {
+  padding-left: 0.5em;
+}
+
+#project-btn {
+  margin: 0;
+  padding: 1em;
+  border-radius: 0%;
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #9c3c37;
+  color: white;
+}
+
+#project-btn:hover {
+  background-color: #72312d;
+}
+
+#sub-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+#project-btn div {
+  align-self: baseline;
+}
+
+#project-btn span {
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+#project-btn span:hover {
+  background-color: #9c3c37;
+  color: #e9bf5c;
+}
+
+/* main content (cards) */
+
+#main-content {
+  background-color: #e9bf5c;
+  flex: 1;
+  padding: 10px;
+}
+
+#main-content h1 {
+  color: black;
+}
+
+#cards {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1em 1em;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#cards > div {
+  padding: 2em;
+  margin: 0.5em;
+  background-color: white;
+  border-left: #aa8238 solid 10px;
+  border-radius: 25%;
+}
+
+#card-btns {
+  margin-left: 5em;
+  padding-top: 1em;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* form */
+
+dialog {
+  width: 40vw;
+  height: 85vh;
+  align-self: center;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 300px 50px rgba(0, 0, 0, 0.9);
+  overflow-y: auto;
+}
+
+/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+dialog::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 4px;
+}
+
+dialog::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+dialog::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+  border: 1px solid #f1f1f1;
+}
+
+dialog::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Custom scrollbar styles for Edge */
+@supports (-ms-overflow-style: none) {
+  dialog {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+}
+
+dialog h1 {
+  text-align: center;
+}
+
+form {
+  margin-left: 8em;
+}
+
+form input,
+select {
+  margin-top: 1em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input:not([type="radio"]):not([type="submit"]),
+select {
+  border-radius: 8px;
+  border: 1px solid #000;
+  width: 25em;
+  height: 2em;
+}
+
+form fieldset {
+  margin-right: 9em;
+  border-radius: 8px;
+}
+
+textarea {
+  border-radius: 8px;
+  border: 1px solid #000;
+  margin: 0.5em 0;
+}
+
+form label {
+  margin-top: 1em;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+input[type="radio"] {
+  display: inline-block;
+  cursor: pointer;
+}
+
+input[type="radio"] + label .color-swatch {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+#dialog-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 9em;
+}
+
+input[type="submit"] {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
