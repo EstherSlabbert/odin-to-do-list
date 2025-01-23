@@ -246,8 +246,10 @@ const ui = (() => {
     <p id="task-project">Project: ${projectTitle}</p>
     <p id="task-priority">Priority: ${displayPriority(task.priority)}</p>
     <p id="task-description">Description: ${task.description}</p>
-    <button id="edit-task-btn">Edit</button>
-    <button id="delete-task-btn">Delete</button>`;
+    <div id="btns">
+      <button id="edit-task-btn">Edit</button>
+      <button id="delete-task-btn">Delete</button>
+    </div>`;
     mainContent.appendChild(taskMainContent);
 
     // Event listeners
@@ -436,6 +438,25 @@ const ui = (() => {
     titleInput.required = true;
     form.appendChild(titleInput);
 
+    const projectLabel = document.createElement("label");
+    projectLabel.setAttribute("for", "project");
+    projectLabel.textContent = "Project: ";
+    form.appendChild(projectLabel);
+
+    form.appendChild(document.createElement("br"));
+
+    const projectInput = createElementWithId("select", "project");
+    projectInput.name = "project";
+    projectInput.required = true;
+    form.appendChild(projectInput);
+
+    projectManager.getProjects().forEach((project) => {
+      const option = document.createElement("option");
+      option.value = project.id;
+      option.textContent = project.title;
+      projectInput.appendChild(option);
+    });
+
     const descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description");
     descriptionLabel.textContent = "Description: ";
@@ -459,6 +480,7 @@ const ui = (() => {
     const dueDateInput = createElementWithId("input", "due");
     dueDateInput.type = "datetime-local";
     dueDateInput.name = "due-date";
+    dueDateInput.value = new Date().toISOString().slice(0, 16);
     form.appendChild(dueDateInput);
 
     const fieldset = document.createElement("fieldset");
@@ -491,25 +513,6 @@ const ui = (() => {
       fieldset.appendChild(label);
 
       fieldset.appendChild(document.createElement("br"));
-    });
-
-    const projectLabel = document.createElement("label");
-    projectLabel.setAttribute("for", "project");
-    projectLabel.textContent = "Project: ";
-    form.appendChild(projectLabel);
-
-    form.appendChild(document.createElement("br"));
-
-    const projectInput = createElementWithId("select", "project");
-    projectInput.name = "project";
-    projectInput.required = true;
-    form.appendChild(projectInput);
-
-    projectManager.getProjects().forEach((project) => {
-      const option = document.createElement("option");
-      option.value = project.id;
-      option.textContent = project.title;
-      projectInput.appendChild(option);
     });
 
     form.appendChild(document.createElement("br"));
@@ -579,6 +582,29 @@ const ui = (() => {
     titleInput.required = true;
     titleInput.value = task.title;
     form.appendChild(titleInput);
+
+    const projectLabel = document.createElement("label");
+    projectLabel.setAttribute("for", "project");
+    projectLabel.textContent = "Project: ";
+    form.appendChild(projectLabel);
+
+    form.appendChild(document.createElement("br"));
+
+    const projectInput = createElementWithId("select", "project");
+    projectInput.name = "project";
+    projectInput.required = true;
+
+    projectManager.getProjects().forEach((project) => {
+      const option = document.createElement("option");
+      option.value = project.id;
+      option.textContent = project.title;
+      if (project.id === currentProjectId) {
+        option.selected = true;
+      }
+      projectInput.appendChild(option);
+    });
+
+    form.appendChild(projectInput);
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description");
@@ -656,28 +682,6 @@ const ui = (() => {
       fieldset.appendChild(document.createElement("br"));
     });
 
-    const projectLabel = document.createElement("label");
-    projectLabel.setAttribute("for", "project");
-    projectLabel.textContent = "Project: ";
-    form.appendChild(projectLabel);
-
-    form.appendChild(document.createElement("br"));
-
-    const projectInput = createElementWithId("select", "project");
-    projectInput.name = "project";
-    projectInput.required = true;
-
-    projectManager.getProjects().forEach((project) => {
-      const option = document.createElement("option");
-      option.value = project.id;
-      option.textContent = project.title;
-      if (project.id === task.project) {
-        option.selected = true;
-      }
-      projectInput.appendChild(option);
-    });
-
-    form.appendChild(projectInput);
     form.appendChild(document.createElement("br"));
 
     const buttons = createElementWithId("div", "dialog-btns");

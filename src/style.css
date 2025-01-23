@@ -134,11 +134,41 @@ img {
   border-radius: 25%;
 }
 
+#cards > div:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+
 #card-btns {
   margin-left: 5em;
   padding-top: 1em;
   display: flex;
   justify-content: space-around;
+}
+
+/* main content (task view) */
+
+#task-main-content {
+  border: #72312d solid 2px;
+  margin: 16px;
+  padding: 12px;
+}
+
+#task-main-content > #btns {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#task-main-content > #btns > button {
+  background-color: #f1f1f1;
+}
+
+#task-main-content > #btns > button:hover {
+  color: #ba2e26;
 }
 
 /* form */
